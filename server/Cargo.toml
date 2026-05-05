@@ -1,0 +1,11 @@
+[package]
+name = "cascading-ui-net-server"
+version = "0.1.0"
+edition = "2021"
+description = "Dev server for cascading-ui.net"
+
+[dependencies]
+actix-files = "0.6"
+actix-web = "4"
+env_logger = "0.11"
+log = "0.4"
