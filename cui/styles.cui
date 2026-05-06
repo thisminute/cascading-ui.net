@@ -1,0 +1,48 @@
+// Global layout and typography
+
+.page {
+    font-family: "system-ui, -apple-system, sans-serif";
+    max-width: "720px";
+    margin: "0 auto";
+    padding: "0 24px 80px";
+    color: "#1a1a2e";
+    line-height: "1.7";
+}
+
+.section {
+    margin-bottom: "56px";
+}
+
+.section_title {
+    font-size: "1.35rem";
+    font-weight: "700";
+    margin-bottom: "20px";
+    color: "#0f0f23";
+    letter-spacing: "-0.01em";
+}
+
+.description {
+    margin-bottom: "16px";
+}
+
+.code_block {
+    font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+    font-size: "0.85rem";
+    background: "#1a1a2e";
+    color: "#e2e8f0";
+    padding: "20px 24px";
+    border-radius: "10px";
+    margin: "20px 0";
+    white-space: "pre";
+    overflow-x: "auto";
+    line-height: "1.6";
+}
+
+.footer {
+    margin-top: "80px";
+    padding-top: "24px";
+    border-top: "1px solid #e8e8e8";
+    color: "#999";
+    font-size: "0.85rem";
+    text-align: "center";
+}

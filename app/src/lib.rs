@@ -4,265 +4,117 @@ use cascading_ui::cui;
 cui! {
     title: "CUI — Cascading UI";
 
-    // Global styles
-    .page {
-        font-family: "Inter, system-ui, -apple-system, sans-serif";
-        max-width: "800px";
-        margin: "0 auto";
-        padding: "40px 24px";
-        color: "#1a1a2e";
-        line-height: "1.7";
-    }
-
-    .hero {
-        padding: "80px 0 60px";
-        text-align: "center";
-    }
-
-    .hero_title {
-        font-size: "3.5rem";
-        font-weight: "800";
-        letter-spacing: "-0.03em";
-        margin-bottom: "0";
-        color: "#0f0f23";
-    }
-
-    .hero_subtitle {
-        font-size: "1.25rem";
-        color: "#555";
-        margin-top: "12px";
-        font-weight: "400";
-    }
-
-    .section {
-        margin-bottom: "48px";
-    }
-
-    .section_title {
-        font-size: "1.5rem";
-        font-weight: "700";
-        margin-bottom: "16px";
-        color: "#0f0f23";
-        border-bottom: "2px solid #e0e0e0";
-        padding-bottom: "8px";
-    }
-
-    .point {
-        margin-bottom: "24px";
-        padding: "20px 24px";
-        background: "#f8f9fa";
-        border-radius: "8px";
-        border-left: "4px solid #4a6cf7";
-    }
-
-    .point_title {
-        font-weight: "700";
-        font-size: "1.1rem";
-        margin-bottom: "4px";
-        color: "#0f0f23";
-    }
-
-    .point_body {
-        color: "#444";
-    }
-
-    .code_block {
-        font-family: "JetBrains Mono, Fira Code, monospace";
-        font-size: "0.9rem";
-        background: "#1e1e2e";
-        color: "#cdd6f4";
-        padding: "20px 24px";
-        border-radius: "8px";
-        margin: "16px 0";
-        white-space: "pre";
-        overflow-x: "auto";
-        line-height: "1.5";
-    }
-
-    .demo_area {
-        padding: "24px";
-        border: "2px solid #e0e0e0";
-        border-radius: "8px";
-        margin: "16px 0";
-        text-align: "center";
-    }
-
-    .demo_button {
-        padding: "12px 24px";
-        background: "#4a6cf7";
-        color: "white";
-        border: "none";
-        border-radius: "6px";
-        font-size: "1rem";
-        cursor: "pointer";
-        font-weight: "600";
-    }
-
-    .footer {
-        margin-top: "64px";
-        padding-top: "24px";
-        border-top: "1px solid #e0e0e0";
-        color: "#888";
-        font-size: "0.9rem";
-        text-align: "center";
-    }
-
-    .link_style {
-        color: "#4a6cf7";
-        text-decoration: "none";
-        font-weight: "600";
-    }
-
-    // Page structure
     page {
-        .page {}
-
-        header {
-            .hero {}
-
-            h1 {
-                .hero_title {}
+        hero {
+            hero_title {
                 text: "CUI";
             }
-            tagline {
-                .hero_subtitle {}
-                text: "A web language based on CSS syntax. No JavaScript required.";
+            hero_subtitle {
+                text: "A web language based on CSS syntax that compiles to HTML + Wasm. No JavaScript.";
+            }
+            hero_example {
+                text: ".button {\n    background: \"blue\";\n    color: \"white\";\n    cursor: \"pointer\";\n}\n\npage {\n    button {\n        text: \"click me\";\n        ?click {\n            text: \"clicked!\";\n        }\n    }\n}";
             }
         }
 
-        intro {
-            .section {}
-
-            heading {
-                .section_title {}
+        section {
+            section_title {
                 text: "What is CUI?";
             }
             description {
-                text: "CUI (Cascading UI) is a compiled web language where you write your entire application in CSS-like syntax. It compiles to static HTML, CSS, and WebAssembly — producing fast, minimal output with zero JavaScript runtime.";
-            }
-            example {
-                .code_block {}
-                text: "text: \"hello world\";\ncolor: \"blue\";\n?click {\n    text: \"clicked!\";\n    color: \"green\";\n}";
+                text: "CUI is a compiled language where structure, style, and behavior live in one CSS-like syntax. Classes define how things look. Instances create them. Listeners handle events. The compiler figures out the rest — what's static gets baked into HTML, what's dynamic gets compiled to WebAssembly.";
             }
         }
 
-        selling_points {
-            .section {}
-
-            heading {
-                .section_title {}
+        section {
+            section_title {
                 text: "Why CUI?";
             }
 
-            point_1 {
-                .point {}
-                title {
-                    .point_title {}
+            point {
+                point_title {
                     text: "Zero JavaScript";
                 }
-                body {
-                    .point_body {}
-                    text: "CUI compiles to WebAssembly. No bundler, no transpiler, no npm. Your event handlers and reactivity run as native Wasm — faster than any JS framework.";
+                point_body {
+                    text: "CUI compiles to WebAssembly. No bundler, no transpiler, no node_modules. Event handlers and reactivity run as native Wasm.";
                 }
             }
 
-            point_2 {
-                .point {}
-                title {
-                    .point_title {}
+            point {
+                point_title {
                     text: "Three-layer compilation";
                 }
-                body {
-                    .point_body {}
-                    text: "The compiler detects what's fully static (baked into HTML), what needs one-time initialization (wired up at page load), and what's truly reactive (re-renders on state change). Static pages have zero runtime cost.";
+                point_body {
+                    text: "The compiler detects what's fully static (baked into HTML), what needs one-time setup (wired up at page load), and what's truly reactive. Static pages have zero runtime cost.";
                 }
             }
 
-            point_3 {
-                .point {}
-                title {
-                    .point_title {}
+            point {
+                point_title {
                     text: "CSS semantics you already know";
                 }
-                body {
-                    .point_body {}
-                    text: "Classes cascade. Properties inherit. Specificity determines priority. If you know CSS, you already understand the mental model — CUI just extends it to structure and behavior.";
+                point_body {
+                    text: "Classes cascade. Properties inherit. If you know CSS, you know the mental model. CUI extends it to structure and behavior.";
                 }
             }
 
-            point_4 {
-                .point {}
-                title {
-                    .point_title {}
-                    text: "Declarative everything";
+            point {
+                point_title {
+                    text: "Three block types, that's it";
                 }
-                body {
-                    .point_body {}
-                    text: "Structure, style, and behavior in one unified syntax. No template language. No separate script tag. No context switching between HTML, CSS, and JS.";
+                point_body {
+                    text: "Instances create elements. Classes define their appearance. Listeners handle events. Everything else is a property. No components, no hooks, no lifecycle methods.";
                 }
             }
         }
 
-        demo_section {
-            .section {}
-
-            heading {
-                .section_title {}
-                text: "Live demo";
+        section {
+            section_title {
+                text: "Try it";
             }
             description {
-                text: "This entire page is built with CUI. Here's a live interactive element:";
+                text: "This page is built with CUI. The button below is a live Wasm element:";
             }
-            demo {
-                .demo_area {}
-                button {
-                    .demo_button {}
+            demo_area {
+                demo_button {
                     $label: "Click me";
                     text: $label;
                     ?click {
-                        $label: "Clicked! CUI handles this through Wasm.";
+                        $label: "Clicked! This ran through Wasm.";
                     }
                 }
             }
         }
 
-        architecture {
-            .section {}
-
-            heading {
-                .section_title {}
+        section {
+            section_title {
                 text: "How it works";
             }
             description {
-                text: "CUI is implemented as a Rust procedural macro. Your CUI source code is parsed, analyzed, and compiled at build time:";
+                text: "CUI is a Rust procedural macro. Your source is parsed, analyzed, and compiled at build time:";
             }
-            pipeline {
-                .code_block {}
-                text: "CUI source\n  -> parse (syn)\n  -> AST\n  -> analyze\n  -> semantics tree\n  -> render & cascade\n  -> compile\n  -> HTML + CSS + Wasm";
+            code_block {
+                text: "CUI source\n  -> parse\n  -> AST\n  -> analyze\n  -> semantics tree\n  -> cascade classes into instances\n  -> compile\n  -> HTML + CSS + Wasm";
             }
-            explanation {
-                margin-top: "16px";
-                text: "The cascading phase resolves class inheritance, variable scoping, and determines which layer each piece of content belongs to. Only truly dynamic parts incur any runtime cost.";
+            description {
+                text: "The cascade phase resolves class inheritance and variable scoping, and assigns each piece of content to a compilation layer. Only reactive parts incur runtime cost.";
             }
         }
 
-        links_section {
-            .section {}
-
-            heading {
-                .section_title {}
+        section {
+            section_title {
                 text: "Get started";
             }
-            github {
-                .link_style {}
+            github_link {
+                color: "#0f0f23";
+                font-weight: "500";
                 link: "https://github.com/thisminute/cascading-ui";
-                text: "GitHub: cascading-ui";
+                text: "github.com/thisminute/cascading-ui";
             }
         }
 
-        site_footer {
-            .footer {}
-            text: "Built with CUI. MIT License.";
+        footer {
+            text: "Built with CUI.";
         }
     }
 }
