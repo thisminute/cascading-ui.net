@@ -191,7 +191,7 @@ cui! {
                     padding: "20px 28px";
                     border-radius: "0 0 10px 10px";
                     border-top: "1px solid #333";
-                    text-align: "left";
+                    text-align: "center";
 
                     hero_demo_label {
                         text: "Output:";
@@ -315,7 +315,10 @@ cui! {
                     font-weight: "600";
                     border: "none";
                     font-size: "1rem";
-                    display: "inline-block";
+                    display: "block";
+                    width: "fit-content";
+                    margin: "0 auto";
+                    text-align: "center";
 
                     ?click {
                         $show_home: "none";
