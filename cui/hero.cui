@@ -9,20 +9,19 @@
         font-weight: "800";
         letter-spacing: "-0.04em";
         margin-bottom: "8px";
-        color: "#0f0f23";
     }
 
     .hero_subtitle {
         font-size: "1.15rem";
-        color: "#666";
         font-weight: "400";
         margin-bottom: "32px";
+        opacity: "0.6";
     }
 
     .hero_example {
         font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
         font-size: "0.85rem";
-        background: "#1a1a2e";
+        background: $code;
         color: "#e2e8f0";
         padding: "24px 28px";
         border-radius: "10px";
