@@ -46,6 +46,10 @@
     line-height: "1.6";
 }
 
+.github_link {
+    text-decoration: "none";
+}
+
 .footer {
     margin-top: "80px";
     padding-top: "24px";

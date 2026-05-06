@@ -154,6 +154,7 @@ cui! {
                     text: "Get started";
                 }
                 github_link {
+                    color: $fg;
                     font-weight: "500";
                     link: "https://github.com/thisminute/cascading-ui";
                     text: "github.com/thisminute/cascading-ui";
