@@ -2,3 +2,6 @@
 /app/target
 /app/pkg
 Cargo.lock
+node_modules/
+screenshots/
+test-results/
