@@ -342,6 +342,8 @@ cui! {
 
                 /* ===== LESSON 1: Text Property ===== */
                 lesson_1 {
+                    let $expanded_1: "false";
+
                     back_btn {
                         text: "← Back to Home";
                         background: $tile;
@@ -412,6 +414,86 @@ cui! {
                         line-height: "1.6";
                     }
 
+                    expand_btn {
+                        text: "▶ See compiled result";
+                        background: "transparent";
+                        color: $accent;
+                        padding: "8px 0";
+                        cursor: "pointer";
+                        font-weight: "500";
+                        border: "none";
+                        margin-top: "24px";
+                        text-align: "left";
+
+                        ?click {
+                            $expanded_1: "true";
+                        }
+                    }
+
+                    compiled {
+                        collapse_btn {
+                            text: "▼ Hide compiled result";
+                            background: "transparent";
+                            color: $accent;
+                            padding: "8px 0";
+                            cursor: "pointer";
+                            font-weight: "500";
+                            border: "none";
+                            text-align: "left";
+
+                            ?click {
+                                $expanded_1: "false";
+                            }
+                        }
+
+                        compiled_html {
+                            text: "Generated HTML:";
+                            font-weight: "600";
+                            margin-top: "16px";
+                            margin-bottom: "8px";
+                            font-size: "0.95rem";
+                        }
+
+                        html_code {
+                            text: "<div class=\"a\">Hello, CUI!</div>";
+                            background: $code;
+                            color: "#e2e8f0";
+                            padding: "12px";
+                            border-radius: "6px";
+                            margin-bottom: "16px";
+                            overflow-x: "auto";
+                            font-family: "monospace";
+                            font-size: "0.85rem";
+                        }
+
+                        compiled_css {
+                            text: "Generated CSS (selector a):";
+                            font-weight: "600";
+                            margin-bottom: "8px";
+                            font-size: "0.95rem";
+                        }
+
+                        css_code {
+                            text: ".a { /* static styles would appear here */ }";
+                            background: $code;
+                            color: "#e2e8f0";
+                            padding: "12px";
+                            border-radius: "6px";
+                            margin-bottom: "12px";
+                            overflow-x: "auto";
+                            font-family: "monospace";
+                            font-size: "0.85rem";
+                        }
+
+                        note {
+                            text: "The compiler generates unique selectors (a, b, c...) and bakes the HTML string directly into the HTML file. Static content = zero runtime overhead.";
+                            font-size: "0.9rem";
+                            color: "#666";
+                            font-style: "italic";
+                            margin-top: "12px";
+                        }
+                    }
+
                     nav {
                         margin-top: "40px";
                         text-align: "center";
@@ -435,6 +517,8 @@ cui! {
 
                 /* ===== LESSON 2: Elements & Structure ===== */
                 lesson_2 {
+                    let $expanded_2: "false";
+
                     back_btn {
                         text: "← Back to Home";
                         background: $tile;
@@ -518,6 +602,86 @@ cui! {
                         line-height: "1.6";
                     }
 
+                    expand_btn {
+                        text: "▶ See compiled result";
+                        background: "transparent";
+                        color: $accent;
+                        padding: "8px 0";
+                        cursor: "pointer";
+                        font-weight: "500";
+                        border: "none";
+                        margin-top: "24px";
+                        text-align: "left";
+
+                        ?click {
+                            $expanded_2: "true";
+                        }
+                    }
+
+                    compiled {
+                        collapse_btn {
+                            text: "▼ Hide compiled result";
+                            background: "transparent";
+                            color: $accent;
+                            padding: "8px 0";
+                            cursor: "pointer";
+                            font-weight: "500";
+                            border: "none";
+                            text-align: "left";
+
+                            ?click {
+                                $expanded_2: "false";
+                            }
+                        }
+
+                        compiled_html {
+                            text: "Generated HTML (with nesting):";
+                            font-weight: "600";
+                            margin-top: "16px";
+                            margin-bottom: "8px";
+                            font-size: "0.95rem";
+                        }
+
+                        html_code {
+                            text: "<div class=\"b\">\n  <div class=\"c\">Nested Content</div>\n  <div class=\"d\">This demonstrates...</div>\n</div>";
+                            background: $code;
+                            color: "#e2e8f0";
+                            padding: "12px";
+                            border-radius: "6px";
+                            margin-bottom: "16px";
+                            overflow-x: "auto";
+                            font-family: "monospace";
+                            font-size: "0.85rem";
+                        }
+
+                        compiled_css {
+                            text: "Generated CSS (selectors b, c, d):";
+                            font-weight: "600";
+                            margin-bottom: "8px";
+                            font-size: "0.95rem";
+                        }
+
+                        css_code {
+                            text: ".b { /* card styles */ }\n.c { /* title styles */ }\n.d { /* body styles */ }";
+                            background: $code;
+                            color: "#e2e8f0";
+                            padding: "12px";
+                            border-radius: "6px";
+                            margin-bottom: "12px";
+                            overflow-x: "auto";
+                            font-family: "monospace";
+                            font-size: "0.85rem";
+                        }
+
+                        note {
+                            text: "Each nesting level gets its own CSS selector (a-z, then AA-AZ, etc.). The HTML preserves the DOM structure. No extra wrapper divs or shadow DOM.";
+                            font-size: "0.9rem";
+                            color: "#666";
+                            font-style: "italic";
+                            margin-top: "12px";
+                        }
+                    }
+
                     nav {
                         margin-top: "40px";
                         text-align: "center";
@@ -557,6 +721,8 @@ cui! {
 
                 /* ===== LESSON 3: Classes & Cascading ===== */
                 lesson_3 {
+                    let $expanded_3: "false";
+
                     back_btn {
                         text: "← Back to Home";
                         background: $tile;
@@ -645,6 +811,86 @@ cui! {
                         line-height: "1.6";
                     }
 
+                    expand_btn {
+                        text: "▶ See compiled result";
+                        background: "transparent";
+                        color: $accent;
+                        padding: "8px 0";
+                        cursor: "pointer";
+                        font-weight: "500";
+                        border: "none";
+                        margin-top: "24px";
+                        text-align: "left";
+
+                        ?click {
+                            $expanded_3: "true";
+                        }
+                    }
+
+                    compiled {
+                        collapse_btn {
+                            text: "▼ Hide compiled result";
+                            background: "transparent";
+                            color: $accent;
+                            padding: "8px 0";
+                            cursor: "pointer";
+                            font-weight: "500";
+                            border: "none";
+                            text-align: "left";
+
+                            ?click {
+                                $expanded_3: "false";
+                            }
+                        }
+
+                        compiled_html {
+                            text: "Generated HTML (all buttons share class):";
+                            font-weight: "600";
+                            margin-top: "16px";
+                            margin-bottom: "8px";
+                            font-size: "0.95rem";
+                        }
+
+                        html_code {
+                            text: "<button class=\"e\">Primary</button>\n<button class=\"e\">Secondary</button>\n<button class=\"e\">Custom</button>";
+                            background: $code;
+                            color: "#e2e8f0";
+                            padding: "12px";
+                            border-radius: "6px";
+                            margin-bottom: "16px";
+                            overflow-x: "auto";
+                            font-family: "monospace";
+                            font-size: "0.85rem";
+                        }
+
+                        compiled_css {
+                            text: "Generated CSS (one class, inline overrides):";
+                            font-weight: "600";
+                            margin-bottom: "8px";
+                            font-size: "0.95rem";
+                        }
+
+                        css_code {
+                            text: ".e { padding: 12px; cursor: pointer; color: white; }\n/* button 1: background blue (inline) */\n/* button 2: background gray (inline) */\n/* button 3: background red (inline) */";
+                            background: $code;
+                            color: "#e2e8f0";
+                            padding: "12px";
+                            border-radius: "6px";
+                            margin-bottom: "12px";
+                            overflow-x: "auto";
+                            font-family: "monospace";
+                            font-size: "0.85rem";
+                        }
+
+                        note {
+                            text: "The .button_style class is compiled once. Each instance applies the class and adds instance-specific styles (like background color) inline or as additional rules. This minimizes CSS size.";
+                            font-size: "0.9rem";
+                            color: "#666";
+                            font-style: "italic";
+                            margin-top: "12px";
+                        }
+                    }
+
                     nav {
                         margin-top: "40px";
                         text-align: "center";
@@ -684,6 +930,8 @@ cui! {
 
                 /* ===== LESSON 4: Events & Interactivity ===== */
                 lesson_4 {
+                    let $expanded_4: "false";
+
                     back_btn {
                         text: "← Back to Home";
                         background: $tile;
@@ -789,6 +1037,86 @@ cui! {
                         line-height: "1.6";
                     }
 
+                    expand_btn {
+                        text: "▶ See compiled result";
+                        background: "transparent";
+                        color: $accent;
+                        padding: "8px 0";
+                        cursor: "pointer";
+                        font-weight: "500";
+                        border: "none";
+                        margin-top: "24px";
+                        text-align: "left";
+
+                        ?click {
+                            $expanded_4: "true";
+                        }
+                    }
+
+                    compiled {
+                        collapse_btn {
+                            text: "▼ Hide compiled result";
+                            background: "transparent";
+                            color: $accent;
+                            padding: "8px 0";
+                            cursor: "pointer";
+                            font-weight: "500";
+                            border: "none";
+                            text-align: "left";
+
+                            ?click {
+                                $expanded_4: "false";
+                            }
+                        }
+
+                        compiled_html {
+                            text: "Generated HTML (interactive button):";
+                            font-weight: "600";
+                            margin-top: "16px";
+                            margin-bottom: "8px";
+                            font-size: "0.95rem";
+                        }
+
+                        html_code {
+                            text: "<div class=\"h\">\n  <div class=\"i\">0</div>\n  <button class=\"j\">Increment</button>\n  <button class=\"k\">Reset</button>\n</div>";
+                            background: $code;
+                            color: "#e2e8f0";
+                            padding: "12px";
+                            border-radius: "6px";
+                            margin-bottom: "16px";
+                            overflow-x: "auto";
+                            font-family: "monospace";
+                            font-size: "0.85rem";
+                        }
+
+                        compiled_css {
+                            text: "Generated CSS (minimal):";
+                            font-weight: "600";
+                            margin-bottom: "8px";
+                            font-size: "0.95rem";
+                        }
+
+                        css_code {
+                            text: ".h { /* container styles */ }\n.i { /* counter display */ }\n.j { /* increment button */ }\n.k { /* reset button */ }";
+                            background: $code;
+                            color: "#e2e8f0";
+                            padding: "12px";
+                            border-radius: "6px";
+                            margin-bottom: "12px";
+                            overflow-x: "auto";
+                            font-family: "monospace";
+                            font-size: "0.85rem";
+                        }
+
+                        note {
+                            text: "The event handlers (?click) and reactive variables are compiled into the Wasm binary. The HTML and CSS are static. When you click, Wasm updates the DOM. No JavaScript anywhere.";
+                            font-size: "0.9rem";
+                            color: "#666";
+                            font-style: "italic";
+                            margin-top: "12px";
+                        }
+                    }
+
                     nav {
                         margin-top: "40px";
                         text-align: "center";
@@ -828,6 +1156,8 @@ cui! {
 
                 /* ===== LESSON 5: Complete Example ===== */
                 lesson_5 {
+                    let $expanded_5: "false";
+
                     back_btn {
                         text: "← Back to Home";
                         background: $tile;
@@ -941,6 +1271,86 @@ cui! {
                         text: "This combines: (1) nested structure, (2) class cascading for shared styles, (3) event handlers for interactivity. Everything compiles to static HTML and Wasm.";
                         margin-top: "24px";
                         line-height: "1.6";
+                    }
+
+                    expand_btn {
+                        text: "▶ See compiled result";
+                        background: "transparent";
+                        color: $accent;
+                        padding: "8px 0";
+                        cursor: "pointer";
+                        font-weight: "500";
+                        border: "none";
+                        margin-top: "24px";
+                        text-align: "left";
+
+                        ?click {
+                            $expanded_5: "true";
+                        }
+                    }
+
+                    compiled {
+                        collapse_btn {
+                            text: "▼ Hide compiled result";
+                            background: "transparent";
+                            color: $accent;
+                            padding: "8px 0";
+                            cursor: "pointer";
+                            font-weight: "500";
+                            border: "none";
+                            text-align: "left";
+
+                            ?click {
+                                $expanded_5: "false";
+                            }
+                        }
+
+                        compiled_html {
+                            text: "Generated HTML (composed structure):";
+                            font-weight: "600";
+                            margin-top: "16px";
+                            margin-bottom: "8px";
+                            font-size: "0.95rem";
+                        }
+
+                        html_code {
+                            text: "<div class=\"o p\">\n  <div class=\"q\"></div>\n  <div class=\"r\">Learn CUI basics</div>\n</div>\n<div class=\"o p\">\n  <div class=\"q\"></div>\n  <div class=\"r\">Build a component</div>\n</div>";
+                            background: $code;
+                            color: "#e2e8f0";
+                            padding: "12px";
+                            border-radius: "6px";
+                            margin-bottom: "16px";
+                            overflow-x: "auto";
+                            font-family: "monospace";
+                            font-size: "0.85rem";
+                        }
+
+                        compiled_css {
+                            text: "Generated CSS (reusable class):";
+                            font-weight: "600";
+                            margin-bottom: "8px";
+                            font-size: "0.95rem";
+                        }
+
+                        css_code {
+                            text: ".o { display: flex; padding: 12px; }\n.p { border-left: 4px solid blue; }\n.q { width: 20px; height: 20px; }\n.r { flex: 1; }";
+                            background: $code;
+                            color: "#e2e8f0";
+                            padding: "12px";
+                            border-radius: "6px";
+                            margin-bottom: "12px";
+                            overflow-x: "auto";
+                            font-family: "monospace";
+                            font-size: "0.85rem";
+                        }
+
+                        note {
+                            text: "The .todo_item class is defined once. Each instance (item_1, item_2) applies the class and adds specific content. Click handlers go into Wasm. This is efficient reuse: minimal HTML, shared CSS.";
+                            font-size: "0.9rem";
+                            color: "#666";
+                            font-style: "italic";
+                            margin-top: "12px";
+                        }
                     }
 
                     nav {
