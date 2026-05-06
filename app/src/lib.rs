@@ -22,31 +22,54 @@ cui! {
     let $show_l3: "none";
     let $show_l4: "none";
     let $show_l5: "none";
+    let $show_l6: "none";
 
-    // ── Compiled-result panels ──
-    let $compiled_1: "none";
-    let $compiled_2: "none";
-    let $compiled_3: "none";
-    let $compiled_4: "none";
-    let $compiled_5: "none";
+    // ── Sidebar active state ──
+    let $fw_o: "700";
+    let $fw_1: "400";
+    let $fw_2: "400";
+    let $fw_3: "400";
+    let $fw_4: "400";
+    let $fw_5: "400";
+    let $fw_6: "400";
 
-    // ── Per-lesson expand/collapse toggle class pairs ──
-    // Each pair toggles a specific $compiled_N variable via apply.
+    // ── Code viewer tab state (CUI vs compiled HTML) ──
+    let $cui_0: "block";
+    let $html_0: "none";
+    let $cui_1: "block";
+    let $html_1: "none";
+    let $cui_2: "block";
+    let $html_2: "none";
+    let $cui_3: "block";
+    let $html_3: "none";
+    let $cui_4: "block";
+    let $html_4: "none";
+    let $cui_5: "block";
+    let $html_5: "none";
+    let $cui_6: "block";
+    let $html_6: "none";
 
-    .l1_show { text: "▶ Show compiled HTML + CSS"; cursor: "pointer"; color: $accent; background: "transparent"; border: "none"; padding: "8px 0"; font-weight: "500"; font-size: "0.9rem"; ?click { $compiled_1: "block"; apply: .l1_hide; } }
-    .l1_hide { text: "▼ Hide compiled HTML + CSS"; cursor: "pointer"; color: $accent; background: "transparent"; border: "none"; padding: "8px 0"; font-weight: "500"; font-size: "0.9rem"; ?click { $compiled_1: "none"; apply: .l1_show; } }
+    // ── Per-code-block tab toggle classes (apply pattern) ──
+    .h_to_html { text: "HTML →"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_0: "none"; $html_0: "block"; apply: .h_to_cui; } }
+    .h_to_cui { text: "← CUI"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_0: "block"; $html_0: "none"; apply: .h_to_html; } }
 
-    .l2_show { text: "▶ Show compiled HTML + CSS"; cursor: "pointer"; color: $accent; background: "transparent"; border: "none"; padding: "8px 0"; font-weight: "500"; font-size: "0.9rem"; ?click { $compiled_2: "block"; apply: .l2_hide; } }
-    .l2_hide { text: "▼ Hide compiled HTML + CSS"; cursor: "pointer"; color: $accent; background: "transparent"; border: "none"; padding: "8px 0"; font-weight: "500"; font-size: "0.9rem"; ?click { $compiled_2: "none"; apply: .l2_show; } }
+    .l1_to_html { text: "HTML →"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_1: "none"; $html_1: "block"; apply: .l1_to_cui; } }
+    .l1_to_cui { text: "← CUI"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_1: "block"; $html_1: "none"; apply: .l1_to_html; } }
 
-    .l3_show { text: "▶ Show compiled HTML + CSS"; cursor: "pointer"; color: $accent; background: "transparent"; border: "none"; padding: "8px 0"; font-weight: "500"; font-size: "0.9rem"; ?click { $compiled_3: "block"; apply: .l3_hide; } }
-    .l3_hide { text: "▼ Hide compiled HTML + CSS"; cursor: "pointer"; color: $accent; background: "transparent"; border: "none"; padding: "8px 0"; font-weight: "500"; font-size: "0.9rem"; ?click { $compiled_3: "none"; apply: .l3_show; } }
+    .l2_to_html { text: "HTML →"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_2: "none"; $html_2: "block"; apply: .l2_to_cui; } }
+    .l2_to_cui { text: "← CUI"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_2: "block"; $html_2: "none"; apply: .l2_to_html; } }
 
-    .l4_show { text: "▶ Show compiled HTML + CSS"; cursor: "pointer"; color: $accent; background: "transparent"; border: "none"; padding: "8px 0"; font-weight: "500"; font-size: "0.9rem"; ?click { $compiled_4: "block"; apply: .l4_hide; } }
-    .l4_hide { text: "▼ Hide compiled HTML + CSS"; cursor: "pointer"; color: $accent; background: "transparent"; border: "none"; padding: "8px 0"; font-weight: "500"; font-size: "0.9rem"; ?click { $compiled_4: "none"; apply: .l4_show; } }
+    .l3_to_html { text: "HTML →"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_3: "none"; $html_3: "block"; apply: .l3_to_cui; } }
+    .l3_to_cui { text: "← CUI"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_3: "block"; $html_3: "none"; apply: .l3_to_html; } }
 
-    .l5_show { text: "▶ Show compiled HTML + CSS"; cursor: "pointer"; color: $accent; background: "transparent"; border: "none"; padding: "8px 0"; font-weight: "500"; font-size: "0.9rem"; ?click { $compiled_5: "block"; apply: .l5_hide; } }
-    .l5_hide { text: "▼ Hide compiled HTML + CSS"; cursor: "pointer"; color: $accent; background: "transparent"; border: "none"; padding: "8px 0"; font-weight: "500"; font-size: "0.9rem"; ?click { $compiled_5: "none"; apply: .l5_show; } }
+    .l4_to_html { text: "HTML →"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_4: "none"; $html_4: "block"; apply: .l4_to_cui; } }
+    .l4_to_cui { text: "← CUI"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_4: "block"; $html_4: "none"; apply: .l4_to_html; } }
+
+    .l5_to_html { text: "HTML →"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_5: "none"; $html_5: "block"; apply: .l5_to_cui; } }
+    .l5_to_cui { text: "← CUI"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_5: "block"; $html_5: "none"; apply: .l5_to_html; } }
+
+    .l6_to_html { text: "HTML →"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_6: "none"; $html_6: "block"; apply: .l6_to_cui; } }
+    .l6_to_cui { text: "← CUI"; cursor: "pointer"; color: "#94a3b8"; background: "transparent"; border: "none"; padding: "4px 10px"; font-size: "0.8rem"; font-family: "ui-monospace, SFMono-Regular, Menlo, monospace"; ?click { $cui_6: "block"; $html_6: "none"; apply: .l6_to_html; } }
 
     // ── Theme toggle ──
     .light_mode_button {
@@ -80,16 +103,6 @@ cui! {
             $code_bg: "#1a1a2e";
             apply: .light_mode_button;
         }
-    }
-
-    // ── Sidebar menu item classes ──
-    .menu_item {
-        padding: "8px 16px";
-        cursor: "pointer";
-        border-radius: "4px";
-        font-size: "0.85rem";
-        margin-bottom: "4px";
-        color: $fg;
     }
 
     page {
@@ -137,18 +150,41 @@ cui! {
                     opacity: "0.6";
                     margin-bottom: "32px";
                 }
-                hero_example {
-                    text: ".button {\n    background: \"blue\";\n    color: \"white\";\n    cursor: \"pointer\";\n}\n\npage {\n    button {\n        text: \"click me\";\n        ?click {\n            text: \"clicked!\";\n        }\n    }\n}";
+                hero_code_wrap {
                     background: $code_bg;
-                    color: "#e2e8f0";
-                    padding: "24px 28px";
                     border-radius: "10px 10px 0 0";
-                    font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                    font-size: "0.85rem";
                     text-align: "left";
-                    overflow-x: "auto";
-                    line-height: "1.6";
-                    white-space: "pre";
+                    position: "relative";
+
+                    hero_tab {
+                        position: "absolute";
+                        top: "8px";
+                        right: "12px";
+                        h_to_html {}
+                    }
+
+                    hero_cui {
+                        display: $cui_0;
+                        text: ".button {\n    background: \"blue\";\n    color: \"white\";\n    cursor: \"pointer\";\n}\n\npage {\n    button {\n        text: \"click me\";\n        ?click {\n            text: \"clicked!\";\n        }\n    }\n}";
+                        color: "#e2e8f0";
+                        padding: "24px 28px";
+                        font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                        font-size: "0.85rem";
+                        overflow-x: "auto";
+                        line-height: "1.6";
+                        white-space: "pre";
+                    }
+                    hero_html {
+                        display: $html_0;
+                        text: "&lt;div style='display:inline-block;\n  border-radius:4px;padding:8px 16px;\n  border:none;font-size:0.9rem;'\n  class='g'&gt;click me&lt;/div&gt;\n\n/* CSS (from .button class) */\n.g { color:white; cursor:pointer;\n     background:blue; }\n\n/* Wasm: click updates textContent */";
+                        color: "#e2e8f0";
+                        padding: "24px 28px";
+                        font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                        font-size: "0.85rem";
+                        overflow-x: "auto";
+                        line-height: "1.6";
+                        white-space: "pre";
+                    }
                 }
                 hero_demo {
                     background: $tile;
@@ -158,7 +194,7 @@ cui! {
                     text-align: "left";
 
                     hero_demo_label {
-                        text: "Live output:";
+                        text: "Output:";
                         font-size: "0.75rem";
                         text-transform: "uppercase";
                         letter-spacing: "0.05em";
@@ -173,8 +209,7 @@ cui! {
                     }
 
                     hero_button {
-                        let $hero_text: "click me";
-                        text: $hero_text;
+                        text: "click me";
                         padding: "8px 16px";
                         border-radius: "4px";
                         border: "none";
@@ -182,7 +217,7 @@ cui! {
                         display: "inline-block";
 
                         ?click {
-                            $hero_text: "clicked!";
+                            text: "clicked!";
                         }
                     }
                 }
@@ -199,7 +234,7 @@ cui! {
                     margin-bottom: "20px";
                 }
                 what_body {
-                    text: "CUI is a compiled language where structure, style, and behavior live in one CSS-like syntax. Classes define how things look. Instances create them. Listeners handle events. The compiler figures out the rest -- what's static gets baked into HTML, what's dynamic gets compiled to WebAssembly.";
+                    text: "CUI is a compiled language where structure, style, and behavior live in one CSS-like syntax. Classes define how things look. Instances create them. Listeners handle events. Variables wire them together. The compiler figures out the rest -- what's static gets baked into HTML, what's dynamic gets compiled to WebAssembly.";
                     line-height: "1.6";
                     color: $fg;
                     margin-bottom: "16px";
@@ -248,52 +283,8 @@ cui! {
                     why_point_body { text: "Classes cascade. Properties inherit. If you know CSS, you know the mental model. CUI extends it to structure and behavior."; }
                 }
                 why_point {
-                    why_point_title { text: "Three block types, that's it"; }
-                    why_point_body { text: "Instances create elements. Classes define their appearance. Listeners handle events. Everything else is a property. No components, no hooks, no lifecycle methods."; }
-                }
-            }
-
-            section_try {
-                margin-bottom: "56px";
-
-                try_title {
-                    text: "Try it";
-                    font-size: "1.35rem";
-                    font-weight: "700";
-                    letter-spacing: "-0.01em";
-                    margin-bottom: "20px";
-                }
-                try_body {
-                    text: "This page is built with CUI. The button below is a live Wasm element:";
-                    line-height: "1.6";
-                    color: $fg;
-                    margin-bottom: "16px";
-                }
-
-                try_demo {
-                    background: $tile;
-                    border-radius: "10px";
-                    padding: "32px 24px";
-                    text-align: "center";
-                    margin: "20px 0";
-
-                    demo_button {
-                        let $label: "Click me";
-                        text: $label;
-                        background: $accent;
-                        color: "#e2e8f0";
-                        padding: "10px 20px";
-                        border-radius: "6px";
-                        cursor: "pointer";
-                        font-weight: "500";
-                        font-size: "0.95rem";
-                        border: "none";
-                        display: "inline-block";
-
-                        ?click {
-                            $label: "Clicked! This ran through Wasm.";
-                        }
-                    }
+                    why_point_title { text: "Four building blocks"; }
+                    why_point_body { text: "Instances create elements. Classes define reusable styling. Listeners handle events. Variables connect them with reactive state. No components, no hooks, no lifecycle methods."; }
                 }
             }
 
@@ -447,14 +438,11 @@ cui! {
                     font-size: "0.85rem";
                     margin-bottom: "4px";
                     color: $fg;
+                    font-weight: $fw_o;
 
                     ?click {
-                        $show_cover: "block";
-                        $show_l1: "none";
-                        $show_l2: "none";
-                        $show_l3: "none";
-                        $show_l4: "none";
-                        $show_l5: "none";
+                        $show_cover: "block"; $show_l1: "none"; $show_l2: "none"; $show_l3: "none"; $show_l4: "none"; $show_l5: "none"; $show_l6: "none";
+                        $fw_o: "700"; $fw_1: "400"; $fw_2: "400"; $fw_3: "400"; $fw_4: "400"; $fw_5: "400"; $fw_6: "400";
                     }
                 }
                 menu_1 {
@@ -465,14 +453,11 @@ cui! {
                     font-size: "0.85rem";
                     margin-bottom: "4px";
                     color: $fg;
+                    font-weight: $fw_1;
 
                     ?click {
-                        $show_cover: "none";
-                        $show_l1: "block";
-                        $show_l2: "none";
-                        $show_l3: "none";
-                        $show_l4: "none";
-                        $show_l5: "none";
+                        $show_cover: "none"; $show_l1: "block"; $show_l2: "none"; $show_l3: "none"; $show_l4: "none"; $show_l5: "none"; $show_l6: "none";
+                        $fw_o: "400"; $fw_1: "700"; $fw_2: "400"; $fw_3: "400"; $fw_4: "400"; $fw_5: "400"; $fw_6: "400";
                     }
                 }
                 menu_2 {
@@ -483,14 +468,11 @@ cui! {
                     font-size: "0.85rem";
                     margin-bottom: "4px";
                     color: $fg;
+                    font-weight: $fw_2;
 
                     ?click {
-                        $show_cover: "none";
-                        $show_l1: "none";
-                        $show_l2: "block";
-                        $show_l3: "none";
-                        $show_l4: "none";
-                        $show_l5: "none";
+                        $show_cover: "none"; $show_l1: "none"; $show_l2: "block"; $show_l3: "none"; $show_l4: "none"; $show_l5: "none"; $show_l6: "none";
+                        $fw_o: "400"; $fw_1: "400"; $fw_2: "700"; $fw_3: "400"; $fw_4: "400"; $fw_5: "400"; $fw_6: "400";
                     }
                 }
                 menu_3 {
@@ -501,14 +483,11 @@ cui! {
                     font-size: "0.85rem";
                     margin-bottom: "4px";
                     color: $fg;
+                    font-weight: $fw_3;
 
                     ?click {
-                        $show_cover: "none";
-                        $show_l1: "none";
-                        $show_l2: "none";
-                        $show_l3: "block";
-                        $show_l4: "none";
-                        $show_l5: "none";
+                        $show_cover: "none"; $show_l1: "none"; $show_l2: "none"; $show_l3: "block"; $show_l4: "none"; $show_l5: "none"; $show_l6: "none";
+                        $fw_o: "400"; $fw_1: "400"; $fw_2: "400"; $fw_3: "700"; $fw_4: "400"; $fw_5: "400"; $fw_6: "400";
                     }
                 }
                 menu_4 {
@@ -519,32 +498,41 @@ cui! {
                     font-size: "0.85rem";
                     margin-bottom: "4px";
                     color: $fg;
+                    font-weight: $fw_4;
 
                     ?click {
-                        $show_cover: "none";
-                        $show_l1: "none";
-                        $show_l2: "none";
-                        $show_l3: "none";
-                        $show_l4: "block";
-                        $show_l5: "none";
+                        $show_cover: "none"; $show_l1: "none"; $show_l2: "none"; $show_l3: "none"; $show_l4: "block"; $show_l5: "none"; $show_l6: "none";
+                        $fw_o: "400"; $fw_1: "400"; $fw_2: "400"; $fw_3: "400"; $fw_4: "700"; $fw_5: "400"; $fw_6: "400";
                     }
                 }
                 menu_5 {
-                    text: "5. All Together";
+                    text: "5. Variables";
                     cursor: "pointer";
                     padding: "8px 16px";
                     border-radius: "4px";
                     font-size: "0.85rem";
                     margin-bottom: "4px";
                     color: $fg;
+                    font-weight: $fw_5;
 
                     ?click {
-                        $show_cover: "none";
-                        $show_l1: "none";
-                        $show_l2: "none";
-                        $show_l3: "none";
-                        $show_l4: "none";
-                        $show_l5: "block";
+                        $show_cover: "none"; $show_l1: "none"; $show_l2: "none"; $show_l3: "none"; $show_l4: "none"; $show_l5: "block"; $show_l6: "none";
+                        $fw_o: "400"; $fw_1: "400"; $fw_2: "400"; $fw_3: "400"; $fw_4: "400"; $fw_5: "700"; $fw_6: "400";
+                    }
+                }
+                menu_6 {
+                    text: "6. All Together";
+                    cursor: "pointer";
+                    padding: "8px 16px";
+                    border-radius: "4px";
+                    font-size: "0.85rem";
+                    margin-bottom: "4px";
+                    color: $fg;
+                    font-weight: $fw_6;
+
+                    ?click {
+                        $show_cover: "none"; $show_l1: "none"; $show_l2: "none"; $show_l3: "none"; $show_l4: "none"; $show_l5: "none"; $show_l6: "block";
+                        $fw_o: "400"; $fw_1: "400"; $fw_2: "400"; $fw_3: "400"; $fw_4: "400"; $fw_5: "400"; $fw_6: "700";
                     }
                 }
             }
@@ -585,6 +573,8 @@ cui! {
                         ?click {
                             $show_cover: "none";
                             $show_l1: "block";
+                            $fw_o: "400";
+                            $fw_1: "700";
                         }
                     }
                 }
@@ -614,89 +604,56 @@ cui! {
                         margin-bottom: "24px";
                     }
 
-                    l1_code_label {
-                        text: "CUI source:";
-                        font-weight: "600";
-                        margin-bottom: "8px";
-                    }
-                    l1_code {
-                        text: "greeting {\n    text: \"Hello, CUI!\";\n}";
+                    l1_code_wrap {
                         background: $code_bg;
-                        color: "#e2e8f0";
-                        padding: "16px 20px";
-                        border-radius: "8px";
-                        font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                        font-size: "0.85rem";
-                        overflow-x: "auto";
-                        white-space: "pre";
-                        line-height: "1.6";
-                        margin-bottom: "24px";
+                        border-radius: "8px 8px 0 0";
+                        position: "relative";
+                        margin-bottom: "0";
+
+                        l1_tab { position: "absolute"; top: "8px"; right: "12px"; l1_to_html {} }
+
+                        l1_cui {
+                            display: $cui_1;
+                            text: "greeting {\n    text: \"Hello, CUI!\";\n}";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
+                        l1_html {
+                            display: $html_1;
+                            text: "&lt;div&gt;Hello, CUI!&lt;/div&gt;\n\n/* No CSS needed — pure text content */\n/* Wasm: none — static HTML only */";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
                     }
 
-                    l1_demo_label {
-                        text: "Live result:";
-                        font-weight: "600";
-                        margin-bottom: "8px";
-                    }
                     l1_demo {
                         background: $tile;
-                        padding: "24px";
-                        border-radius: "8px";
+                        padding: "20px 24px";
+                        border-radius: "0 0 8px 8px";
                         margin-bottom: "24px";
+                        border-top: "1px solid #333";
+
+                        l1_demo_label {
+                            text: "Output:";
+                            font-size: "0.75rem";
+                            text-transform: "uppercase";
+                            letter-spacing: "0.05em";
+                            opacity: "0.5";
+                            margin-bottom: "8px";
+                        }
 
                         greeting {
                             text: "Hello, CUI!";
-                        }
-                    }
-
-                    // Expand / collapse compiled output
-                    l1_show {}
-                    l1_compiled {
-                        display: $compiled_1;
-                        background: $tile;
-                        padding: "16px 20px";
-                        border-radius: "8px";
-                        margin-top: "16px";
-
-                        c1_html_label {
-                            text: "Compiled HTML:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
-                            margin-bottom: "8px";
-                        }
-                        c1_html {
-                            text: "<div>Hello, CUI!</div>";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "16px";
-                            white-space: "pre";
-                        }
-                        c1_css_label {
-                            text: "Compiled CSS:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
-                            margin-bottom: "8px";
-                        }
-                        c1_css {
-                            text: "/* No CSS needed — pure text content */";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "12px";
-                            white-space: "pre";
-                        }
-                        c1_note {
-                            text: "Wasm: none needed. Static text is baked directly into HTML.";
-                            font-size: "0.85rem";
-                            color: "#888";
-                            font-style: "italic";
                         }
                     }
 
@@ -718,6 +675,8 @@ cui! {
                             ?click {
                                 $show_l1: "none";
                                 $show_l2: "block";
+                                $fw_1: "400";
+                                $fw_2: "700";
                             }
                         }
                     }
@@ -737,46 +696,63 @@ cui! {
                         margin-bottom: "8px";
                     }
                     l2_subtitle {
-                        text: "Building hierarchy without thinking about tags";
+                        text: "Building hierarchy with nesting and styling";
                         color: "#888";
                         font-style: "italic";
                         margin-bottom: "24px";
                     }
                     l2_intro {
-                        text: "Elements in CUI are just names followed by braces. Nesting creates parent-child relationships in the DOM. The compiler maps names to HTML tags.";
+                        text: "Elements in CUI are just names followed by braces. Nesting creates parent-child relationships in the DOM. CSS properties go directly on the element — just like CSS selectors, but inline.";
                         line-height: "1.6";
                         margin-bottom: "24px";
                     }
 
-                    l2_code_label {
-                        text: "CUI source:";
-                        font-weight: "600";
-                        margin-bottom: "8px";
-                    }
-                    l2_code {
-                        text: "card {\n    card_title {\n        text: \"My Card\";\n    }\n    card_body {\n        text: \"Content inside the card.\";\n    }\n}";
+                    l2_code_wrap {
                         background: $code_bg;
-                        color: "#e2e8f0";
-                        padding: "16px 20px";
-                        border-radius: "8px";
-                        font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                        font-size: "0.85rem";
-                        overflow-x: "auto";
-                        white-space: "pre";
-                        line-height: "1.6";
-                        margin-bottom: "24px";
+                        border-radius: "8px 8px 0 0";
+                        position: "relative";
+
+                        l2_tab { position: "absolute"; top: "8px"; right: "12px"; l2_to_html {} }
+
+                        l2_cui {
+                            display: $cui_2;
+                            text: "card {\n    border-left: \"4px solid #5865f2\";\n    padding: \"16px\";\n    border-radius: \"4px\";\n\n    card_title {\n        text: \"My Card\";\n        font-weight: \"700\";\n        margin-bottom: \"8px\";\n    }\n    card_body {\n        text: \"Content inside the card.\";\n        opacity: \"0.7\";\n    }\n}";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
+                        l2_html_code {
+                            display: $html_2;
+                            text: "&lt;div style='border-left:4px solid #5865f2;\n  padding:16px;border-radius:4px;'&gt;\n  &lt;div style='font-weight:700;\n    margin-bottom:8px;'&gt;My Card&lt;/div&gt;\n  &lt;div style='opacity:0.7;'&gt;\n    Content inside the card.&lt;/div&gt;\n&lt;/div&gt;\n\n/* All inline styles — no classes needed */\n/* Wasm: none — static HTML only */";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
                     }
 
-                    l2_demo_label {
-                        text: "Live result:";
-                        font-weight: "600";
-                        margin-bottom: "8px";
-                    }
                     l2_demo {
                         background: $tile;
-                        padding: "24px";
-                        border-radius: "8px";
+                        padding: "20px 24px";
+                        border-radius: "0 0 8px 8px";
                         margin-bottom: "24px";
+                        border-top: "1px solid #333";
+
+                        l2_demo_label {
+                            text: "Output:";
+                            font-size: "0.75rem";
+                            text-transform: "uppercase";
+                            letter-spacing: "0.05em";
+                            opacity: "0.5";
+                            margin-bottom: "8px";
+                        }
 
                         card {
                             border-left: "4px solid #5865f2";
@@ -792,56 +768,6 @@ cui! {
                                 text: "Content inside the card.";
                                 opacity: "0.7";
                             }
-                        }
-                    }
-
-                    l2_show {}
-                    l2_compiled {
-                        display: $compiled_2;
-                        background: $tile;
-                        padding: "16px 20px";
-                        border-radius: "8px";
-                        margin-top: "16px";
-
-                        c2_html_label {
-                            text: "Compiled HTML:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
-                            margin-bottom: "8px";
-                        }
-                        c2_html {
-                            text: "<div class=\"a\">\n  <div class=\"b\">My Card</div>\n  <div class=\"c\">Content inside the card.</div>\n</div>";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "16px";
-                            white-space: "pre";
-                        }
-                        c2_css_label {
-                            text: "Compiled CSS:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
-                            margin-bottom: "8px";
-                        }
-                        c2_css {
-                            text: ".a { border-left: 4px solid #5865f2;\n     padding: 16px; border-radius: 4px; }\n.b { font-weight: 700; margin-bottom: 8px; }\n.c { opacity: 0.7; }";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "12px";
-                            white-space: "pre";
-                        }
-                        c2_note {
-                            text: "Wasm: none needed. All static content. Each element gets a short generated class selector.";
-                            font-size: "0.85rem";
-                            color: "#888";
-                            font-style: "italic";
                         }
                     }
 
@@ -863,6 +789,8 @@ cui! {
                             ?click {
                                 $show_l2: "none";
                                 $show_l1: "block";
+                                $fw_2: "400";
+                                $fw_1: "700";
                             }
                         }
                         l2_next {
@@ -878,6 +806,8 @@ cui! {
                             ?click {
                                 $show_l2: "none";
                                 $show_l3: "block";
+                                $fw_2: "400";
+                                $fw_3: "700";
                             }
                         }
                     }
@@ -908,106 +838,67 @@ cui! {
                         margin-bottom: "24px";
                     }
 
-                    l3_code_label {
-                        text: "CUI source:";
-                        font-weight: "600";
-                        margin-bottom: "8px";
-                    }
-                    l3_code {
-                        text: ".tag {\n    padding: \"6px 12px\";\n    border-radius: \"4px\";\n    color: \"white\";\n    font-size: \"0.9rem\";\n}\n\ntag { text: \"Default\"; background: \"#5865f2\"; }\ntag { text: \"Custom\";  background: \"#ff6b6b\"; }\ntag { text: \"Another\"; background: \"#ffa500\"; }";
+                    l3_code_wrap {
                         background: $code_bg;
-                        color: "#e2e8f0";
-                        padding: "16px 20px";
-                        border-radius: "8px";
-                        font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                        font-size: "0.85rem";
-                        overflow-x: "auto";
-                        white-space: "pre";
-                        line-height: "1.6";
-                        margin-bottom: "24px";
+                        border-radius: "8px 8px 0 0";
+                        position: "relative";
+
+                        l3_tab { position: "absolute"; top: "8px"; right: "12px"; l3_to_html {} }
+
+                        l3_cui {
+                            display: $cui_3;
+                            text: ".tag {\n    padding: \"6px 12px\";\n    border-radius: \"4px\";\n    color: \"white\";\n    font-size: \"0.9rem\";\n}\n\ntag { text: \"Default\"; background: \"#5865f2\"; }\ntag { text: \"Custom\";  background: \"#ff6b6b\"; }\ntag { text: \"Another\"; background: \"#ffa500\"; }";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
+                        l3_html_code {
+                            display: $html_3;
+                            text: "&lt;div style='background:#5865f2;'\n  class='o'&gt;Default&lt;/div&gt;\n&lt;div style='background:#ff6b6b;'\n  class='o'&gt;Custom&lt;/div&gt;\n&lt;div style='background:#ffa500;'\n  class='o'&gt;Another&lt;/div&gt;\n\n/* CSS (from .tag class) */\n.o { color:white; padding:6px 12px;\n     border-radius:4px; font-size:0.9rem; }\n\n/* Instance backgrounds are inline */\n/* Wasm: none — static HTML only */";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
                     }
 
-                    l3_demo_label {
-                        text: "Live result:";
-                        font-weight: "600";
-                        margin-bottom: "8px";
-                    }
                     l3_demo {
                         background: $tile;
-                        padding: "24px";
-                        border-radius: "8px";
+                        padding: "20px 24px";
+                        border-radius: "0 0 8px 8px";
                         margin-bottom: "24px";
-                        display: "flex";
-                        gap: "8px";
+                        border-top: "1px solid #333";
 
-                        .tag {
-                            padding: "6px 12px";
-                            border-radius: "4px";
-                            color: "white";
-                            font-size: "0.9rem";
-                        }
-
-                        tag {
-                            text: "Default";
-                            background: "#5865f2";
-                        }
-                        tag {
-                            text: "Custom";
-                            background: "#ff6b6b";
-                        }
-                        tag {
-                            text: "Another";
-                            background: "#ffa500";
-                        }
-                    }
-
-                    l3_show {}
-                    l3_compiled {
-                        display: $compiled_3;
-                        background: $tile;
-                        padding: "16px 20px";
-                        border-radius: "8px";
-                        margin-top: "16px";
-
-                        c3_html_label {
-                            text: "Compiled HTML:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
+                        l3_demo_label {
+                            text: "Output:";
+                            font-size: "0.75rem";
+                            text-transform: "uppercase";
+                            letter-spacing: "0.05em";
+                            opacity: "0.5";
                             margin-bottom: "8px";
                         }
-                        c3_html {
-                            text: "<div class=\"d\">Default</div>\n<div class=\"d\">Custom</div>\n<div class=\"d\">Another</div>";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "16px";
-                            white-space: "pre";
-                        }
-                        c3_css_label {
-                            text: "Compiled CSS:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
-                            margin-bottom: "8px";
-                        }
-                        c3_css {
-                            text: ".d { padding: 6px 12px; border-radius: 4px;\n     color: white; font-size: 0.9rem; }\n/* backgrounds are instance-specific, set inline */";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "12px";
-                            white-space: "pre";
-                        }
-                        c3_note {
-                            text: "Wasm: none. The class compiles to one CSS rule shared by all instances. Instance overrides go inline.";
-                            font-size: "0.85rem";
-                            color: "#888";
-                            font-style: "italic";
+
+                        l3_tags {
+                            display: "flex";
+                            gap: "8px";
+
+                            .tag {
+                                padding: "6px 12px";
+                                border-radius: "4px";
+                                color: "white";
+                                font-size: "0.9rem";
+                            }
+
+                            tag { text: "Default"; background: "#5865f2"; }
+                            tag { text: "Custom"; background: "#ff6b6b"; }
+                            tag { text: "Another"; background: "#ffa500"; }
                         }
                     }
 
@@ -1029,6 +920,8 @@ cui! {
                             ?click {
                                 $show_l3: "none";
                                 $show_l2: "block";
+                                $fw_3: "400";
+                                $fw_2: "700";
                             }
                         }
                         l3_next {
@@ -1044,13 +937,15 @@ cui! {
                             ?click {
                                 $show_l3: "none";
                                 $show_l4: "block";
+                                $fw_3: "400";
+                                $fw_4: "700";
                             }
                         }
                     }
                 }
 
                 // ═══════════════════════════════════
-                //  LESSON 4: Events
+                //  LESSON 4: Events (simplified — no variable needed)
                 // ═══════════════════════════════════
                 lesson_4 {
                     display: $show_l4;
@@ -1069,45 +964,60 @@ cui! {
                         margin-bottom: "24px";
                     }
                     l4_intro {
-                        text: "Listeners (?click, ?blur, ?focus, etc.) respond to browser events. Inside a listener you can change text, modify CSS properties, or create new elements. Everything compiles to WebAssembly.";
+                        text: "Listeners (?click, ?blur, ?focus, etc.) respond to browser events. Properties inside a listener cascade onto the parent element when the event fires. Everything compiles to WebAssembly.";
                         line-height: "1.6";
                         margin-bottom: "24px";
                     }
 
-                    l4_code_label {
-                        text: "CUI source:";
-                        font-weight: "600";
-                        margin-bottom: "8px";
-                    }
-                    l4_code {
-                        text: "let $msg: \"Click me\";\n\nbutton {\n    text: $msg;\n    color: \"white\";\n    background: \"#5865f2\";\n    cursor: \"pointer\";\n\n    ?click {\n        $msg: \"Clicked! This runs in Wasm.\";\n        background: \"#ff6b6b\";\n    }\n}";
+                    l4_code_wrap {
                         background: $code_bg;
-                        color: "#e2e8f0";
-                        padding: "16px 20px";
-                        border-radius: "8px";
-                        font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                        font-size: "0.85rem";
-                        overflow-x: "auto";
-                        white-space: "pre";
-                        line-height: "1.6";
-                        margin-bottom: "24px";
+                        border-radius: "8px 8px 0 0";
+                        position: "relative";
+
+                        l4_tab { position: "absolute"; top: "8px"; right: "12px"; l4_to_html {} }
+
+                        l4_cui {
+                            display: $cui_4;
+                            text: "button {\n    text: \"Click me\";\n    color: \"white\";\n    background: \"#5865f2\";\n    cursor: \"pointer\";\n\n    ?click {\n        text: \"Clicked!\";\n        background: \"#ff6b6b\";\n    }\n}";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
+                        l4_html_code {
+                            display: $html_4;
+                            text: "&lt;div style='color:white;font-weight:500;\n  cursor:pointer;background:#5865f2;\n  border-radius:6px;border:none;\n  display:inline-block;\n  padding:10px 20px;'&gt;\n  Click me&lt;/div&gt;\n\n/* All instance properties — inline */\n/* Wasm: click updates text, background */";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
                     }
 
-                    l4_demo_label {
-                        text: "Live result:";
-                        font-weight: "600";
-                        margin-bottom: "8px";
-                    }
                     l4_demo {
                         background: $tile;
-                        padding: "24px";
-                        border-radius: "8px";
+                        padding: "20px 24px";
+                        border-radius: "0 0 8px 8px";
                         margin-bottom: "24px";
+                        border-top: "1px solid #333";
 
-                        let $msg: "Click me";
+                        l4_demo_label {
+                            text: "Output:";
+                            font-size: "0.75rem";
+                            text-transform: "uppercase";
+                            letter-spacing: "0.05em";
+                            opacity: "0.5";
+                            margin-bottom: "8px";
+                        }
 
                         button {
-                            text: $msg;
+                            text: "Click me";
                             color: "white";
                             background: "#5865f2";
                             padding: "10px 20px";
@@ -1118,76 +1028,9 @@ cui! {
                             display: "inline-block";
 
                             ?click {
-                                $msg: "Clicked! This runs in Wasm.";
+                                text: "Clicked!";
                                 background: "#ff6b6b";
                             }
-                        }
-                    }
-
-                    l4_show {}
-                    l4_compiled {
-                        display: $compiled_4;
-                        background: $tile;
-                        padding: "16px 20px";
-                        border-radius: "8px";
-                        margin-top: "16px";
-
-                        c4_html_label {
-                            text: "Compiled HTML:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
-                            margin-bottom: "8px";
-                        }
-                        c4_html {
-                            text: "<div class=\"e\">Click me</div>";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "16px";
-                            white-space: "pre";
-                        }
-                        c4_css_label {
-                            text: "Compiled CSS:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
-                            margin-bottom: "8px";
-                        }
-                        c4_css {
-                            text: ".e { color: white; background: #5865f2;\n     padding: 10px 20px; cursor: pointer; }";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "16px";
-                            white-space: "pre";
-                        }
-                        c4_wasm_label {
-                            text: "Compiled to Wasm:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
-                            margin-bottom: "8px";
-                        }
-                        c4_wasm {
-                            text: "// The ?click listener compiles to a Wasm function:\n//   - Updates text content: \"Click me\" -> \"Clicked!...\"\n//   - Updates style.background: \"#5865f2\" -> \"#ff6b6b\"\n// (binary Wasm — can't display the actual bytes)";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "12px";
-                            white-space: "pre";
-                        }
-                        c4_note {
-                            text: "This is the first lesson where Wasm is generated. Static content goes to HTML; event handlers go to Wasm.";
-                            font-size: "0.85rem";
-                            color: "#888";
-                            font-style: "italic";
                         }
                     }
 
@@ -1209,10 +1052,12 @@ cui! {
                             ?click {
                                 $show_l4: "none";
                                 $show_l3: "block";
+                                $fw_4: "400";
+                                $fw_3: "700";
                             }
                         }
                         l4_next {
-                            text: "Putting It Together →";
+                            text: "Variables →";
                             background: $accent;
                             color: "white";
                             padding: "10px 20px";
@@ -1224,160 +1069,111 @@ cui! {
                             ?click {
                                 $show_l4: "none";
                                 $show_l5: "block";
+                                $fw_4: "400";
+                                $fw_5: "700";
                             }
                         }
                     }
                 }
 
                 // ═══════════════════════════════════
-                //  LESSON 5: Putting It All Together
+                //  LESSON 5: Variables
                 // ═══════════════════════════════════
                 lesson_5 {
                     display: $show_l5;
 
                     l5_title {
-                        text: "Lesson 5: Putting It All Together";
+                        text: "Lesson 5: Variables";
                         font-size: "1.6rem";
                         font-weight: "700";
                         color: $accent;
                         margin-bottom: "8px";
                     }
                     l5_subtitle {
-                        text: "Structure + classes + events in one component";
+                        text: "Reactive state that connects elements";
                         color: "#888";
                         font-style: "italic";
                         margin-bottom: "24px";
                     }
                     l5_intro {
-                        text: "Now let's combine everything: nested elements for structure, a class for shared styling, and click handlers for interactivity. This is how real components work in CUI.";
+                        text: "Variables (let $name: value) hold state. When a listener assigns a new value, every element reading that variable updates automatically. This is how one element's event can change another element's appearance.";
                         line-height: "1.6";
                         margin-bottom: "24px";
                     }
 
-                    l5_code_label {
-                        text: "CUI source:";
-                        font-weight: "600";
-                        margin-bottom: "8px";
-                    }
-                    l5_code {
-                        text: ".item {\n    display: \"flex\";\n    align-items: \"center\";\n    padding: \"12px\";\n    border-left: \"4px solid #5865f2\";\n    margin-bottom: \"8px\";\n}\n\nitem {\n    checkbox {\n        background: \"#ddd\";\n        cursor: \"pointer\";\n        ?click { background: \"#5865f2\"; }\n    }\n    label { text: \"Learn CUI\"; }\n}\nitem {\n    checkbox {\n        background: \"#ddd\";\n        cursor: \"pointer\";\n        ?click { background: \"#5865f2\"; }\n    }\n    label { text: \"Build something\"; }\n}";
+                    l5_code_wrap {
                         background: $code_bg;
-                        color: "#e2e8f0";
-                        padding: "16px 20px";
-                        border-radius: "8px";
-                        font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                        font-size: "0.85rem";
-                        overflow-x: "auto";
-                        white-space: "pre";
-                        line-height: "1.6";
-                        margin-bottom: "24px";
+                        border-radius: "8px 8px 0 0";
+                        position: "relative";
+
+                        l5_tab { position: "absolute"; top: "8px"; right: "12px"; l5_to_html {} }
+
+                        l5_cui {
+                            display: $cui_5;
+                            text: "let $color: \"#888\";\nlet $status: \"Waiting...\";\n\nlabel {\n    text: $status;\n    color: $color;\n    font-style: \"italic\";\n}\n\nbutton {\n    text: \"Activate\";\n    cursor: \"pointer\";\n    ?click {\n        $status: \"Active!\";\n        $color: \"#5865f2\";\n    }\n}";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
+                        l5_html_code {
+                            display: $html_5;
+                            text: "&lt;div style='font-style:italic;color:#888;\n  font-size:1.1rem;margin-bottom:12px;'&gt;\n  Waiting...&lt;/div&gt;\n&lt;div style='font-weight:500;\n  border-radius:6px;color:white;\n  display:inline-block;background:#5865f2;\n  padding:10px 20px;cursor:pointer;\n  border:none;'&gt;Activate&lt;/div&gt;\n\n/* Wasm: click updates $status text */\n/* and $color on the label element */";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
                     }
 
-                    l5_demo_label {
-                        text: "Live result (click the squares):";
-                        font-weight: "600";
-                        margin-bottom: "8px";
-                    }
                     l5_demo {
                         background: $tile;
-                        padding: "24px";
-                        border-radius: "8px";
+                        padding: "20px 24px";
+                        border-radius: "0 0 8px 8px";
                         margin-bottom: "24px";
+                        border-top: "1px solid #333";
 
-                        .item {
-                            display: "flex";
-                            align-items: "center";
-                            padding: "12px";
-                            border-left: "4px solid #5865f2";
-                            margin-bottom: "8px";
-                            border-radius: "4px";
-                        }
-
-                        item {
-                            checkbox {
-                                width: "20px";
-                                height: "20px";
-                                background: "#ddd";
-                                border-radius: "3px";
-                                margin-right: "12px";
-                                cursor: "pointer";
-                                flex-shrink: "0";
-
-                                ?click {
-                                    background: "#5865f2";
-                                }
-                            }
-                            label {
-                                text: "Learn CUI";
-                            }
-                        }
-                        item {
-                            checkbox {
-                                width: "20px";
-                                height: "20px";
-                                background: "#ddd";
-                                border-radius: "3px";
-                                margin-right: "12px";
-                                cursor: "pointer";
-                                flex-shrink: "0";
-
-                                ?click {
-                                    background: "#5865f2";
-                                }
-                            }
-                            label {
-                                text: "Build something";
-                            }
-                        }
-                    }
-
-                    l5_show {}
-                    l5_compiled {
-                        display: $compiled_5;
-                        background: $tile;
-                        padding: "16px 20px";
-                        border-radius: "8px";
-                        margin-top: "16px";
-
-                        c5_html_label {
-                            text: "Compiled HTML:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
+                        l5_demo_label {
+                            text: "Output:";
+                            font-size: "0.75rem";
+                            text-transform: "uppercase";
+                            letter-spacing: "0.05em";
+                            opacity: "0.5";
                             margin-bottom: "8px";
                         }
-                        c5_html {
-                            text: "<div class=\"f\">\n  <div class=\"g\"></div>\n  <div>Learn CUI</div>\n</div>\n<div class=\"f\">\n  <div class=\"g\"></div>\n  <div>Build something</div>\n</div>";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "16px";
-                            white-space: "pre";
-                        }
-                        c5_css_label {
-                            text: "Compiled CSS:";
-                            font-weight: "600";
-                            font-size: "0.9rem";
-                            margin-bottom: "8px";
-                        }
-                        c5_css {
-                            text: ".f { display: flex; align-items: center;\n     padding: 12px; border-left: 4px solid #5865f2; }\n.g { width: 20px; height: 20px;\n     background: #ddd; cursor: pointer; }";
-                            background: $code_bg;
-                            color: "#e2e8f0";
-                            padding: "12px 16px";
-                            border-radius: "6px";
-                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
-                            font-size: "0.85rem";
-                            margin-bottom: "12px";
-                            white-space: "pre";
-                        }
-                        c5_note {
-                            text: "The .item class compiles to one CSS rule. Each checkbox has a Wasm click handler. The labels are static HTML.";
-                            font-size: "0.85rem";
-                            color: "#888";
+
+                        let $l5_color: "#888";
+                        let $l5_status: "Waiting...";
+
+                        label {
+                            text: $l5_status;
+                            color: $l5_color;
                             font-style: "italic";
+                            font-size: "1.1rem";
+                            margin-bottom: "12px";
+                        }
+
+                        button {
+                            text: "Activate";
+                            color: "white";
+                            background: "#5865f2";
+                            padding: "10px 20px";
+                            border-radius: "6px";
+                            cursor: "pointer";
+                            font-weight: "500";
+                            border: "none";
+                            display: "inline-block";
+
+                            ?click {
+                                $l5_status: "Active!";
+                                $l5_color: "#5865f2";
+                            }
                         }
                     }
 
@@ -1385,7 +1181,6 @@ cui! {
                         margin-top: "40px";
                         display: "flex";
                         justify-content: "space-between";
-                        align-items: "center";
 
                         l5_prev {
                             text: "← Events";
@@ -1400,11 +1195,187 @@ cui! {
                             ?click {
                                 $show_l5: "none";
                                 $show_l4: "block";
+                                $fw_5: "400";
+                                $fw_4: "700";
+                            }
+                        }
+                        l5_next {
+                            text: "Putting It Together →";
+                            background: $accent;
+                            color: "white";
+                            padding: "10px 20px";
+                            border-radius: "6px";
+                            cursor: "pointer";
+                            font-weight: "600";
+                            border: "none";
+
+                            ?click {
+                                $show_l5: "none";
+                                $show_l6: "block";
+                                $fw_5: "400";
+                                $fw_6: "700";
+                            }
+                        }
+                    }
+                }
+
+                // ═══════════════════════════════════
+                //  LESSON 6: Putting It All Together
+                // ═══════════════════════════════════
+                lesson_6 {
+                    display: $show_l6;
+
+                    l6_title {
+                        text: "Lesson 6: Putting It All Together";
+                        font-size: "1.6rem";
+                        font-weight: "700";
+                        color: $accent;
+                        margin-bottom: "8px";
+                    }
+                    l6_subtitle {
+                        text: "Structure + classes + events + variables in one component";
+                        color: "#888";
+                        font-style: "italic";
+                        margin-bottom: "24px";
+                    }
+                    l6_intro {
+                        text: "Now let's combine everything. This to-do list uses: nested elements for structure, a class for shared item styling, apply to toggle checkbox state, and a variable so checking a box changes a separate status element.";
+                        line-height: "1.6";
+                        margin-bottom: "24px";
+                    }
+
+                    l6_code_wrap {
+                        background: $code_bg;
+                        border-radius: "8px 8px 0 0";
+                        position: "relative";
+
+                        l6_tab { position: "absolute"; top: "8px"; right: "12px"; l6_to_html {} }
+
+                        l6_cui {
+                            display: $cui_6;
+                            text: "let $status: \"nothing checked\";\n\n.item {\n    display: \"flex\";\n    align-items: \"center\";\n    padding: \"12px\";\n    border-left: \"4px solid #5865f2\";\n    margin-bottom: \"8px\";\n}\n\n.unchecked {\n    width: \"20px\"; height: \"20px\";\n    background: \"#ddd\";\n    border-radius: \"3px\";\n    cursor: \"pointer\";\n    margin-right: \"12px\";\n    ?click {\n        $status: \"making progress!\";\n        apply: .checked;\n    }\n}\n.checked {\n    width: \"20px\"; height: \"20px\";\n    background: \"#5865f2\";\n    border-radius: \"3px\";\n    cursor: \"pointer\";\n    margin-right: \"12px\";\n    ?click {\n        $status: \"unchecked one\";\n        apply: .unchecked;\n    }\n}\n\nstatus { text: $status; }\n\nitem {\n    unchecked {}\n    label { text: \"Learn CUI\"; }\n}\nitem {\n    unchecked {}\n    label { text: \"Build something\"; }\n}";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
+                        l6_html_code {
+                            display: $html_6;
+                            text: "&lt;div style='color:#888;margin-bottom:12px;\n  font-style:italic;'&gt;nothing checked&lt;/div&gt;\n&lt;div class='s'&gt;\n  &lt;div class='t'&gt;&lt;/div&gt;\n  &lt;div&gt;Learn CUI&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class='s'&gt;\n  &lt;div class='t'&gt;&lt;/div&gt;\n  &lt;div&gt;Build something&lt;/div&gt;\n&lt;/div&gt;\n\n/* CSS (from .item and .unchecked) */\n.s { display:flex; align-items:center;\n     padding:12px; margin-bottom:8px;\n     border-left:4px solid #5865f2; }\n.t { background:#ddd; width:20px;\n     height:20px; cursor:pointer;\n     margin-right:12px; border-radius:3px; }\n\n/* Wasm: click toggles class (apply),\n   updates $status text */";
+                            color: "#e2e8f0";
+                            padding: "16px 20px";
+                            font-family: "ui-monospace, SFMono-Regular, Menlo, monospace";
+                            font-size: "0.85rem";
+                            overflow-x: "auto";
+                            white-space: "pre";
+                            line-height: "1.6";
+                        }
+                    }
+
+                    l6_demo {
+                        background: $tile;
+                        padding: "20px 24px";
+                        border-radius: "0 0 8px 8px";
+                        margin-bottom: "24px";
+                        border-top: "1px solid #333";
+
+                        l6_demo_label {
+                            text: "Output:";
+                            font-size: "0.75rem";
+                            text-transform: "uppercase";
+                            letter-spacing: "0.05em";
+                            opacity: "0.5";
+                            margin-bottom: "8px";
+                        }
+
+                        let $l6_status: "nothing checked";
+
+                        .item {
+                            display: "flex";
+                            align-items: "center";
+                            padding: "12px";
+                            border-left: "4px solid #5865f2";
+                            margin-bottom: "8px";
+                            border-radius: "4px";
+                        }
+
+                        .unchecked {
+                            width: "20px";
+                            height: "20px";
+                            background: "#ddd";
+                            border-radius: "3px";
+                            margin-right: "12px";
+                            cursor: "pointer";
+                            flex-shrink: "0";
+                            ?click {
+                                $l6_status: "making progress!";
+                                apply: .checked;
+                            }
+                        }
+                        .checked {
+                            width: "20px";
+                            height: "20px";
+                            background: "#5865f2";
+                            border-radius: "3px";
+                            margin-right: "12px";
+                            cursor: "pointer";
+                            flex-shrink: "0";
+                            ?click {
+                                $l6_status: "unchecked one";
+                                apply: .unchecked;
+                            }
+                        }
+
+                        l6_status_display {
+                            text: $l6_status;
+                            font-style: "italic";
+                            color: "#888";
+                            margin-bottom: "12px";
+                        }
+
+                        item {
+                            unchecked {}
+                            label {
+                                text: "Learn CUI";
+                            }
+                        }
+                        item {
+                            unchecked {}
+                            label {
+                                text: "Build something";
                             }
                         }
                     }
 
-                    l5_finish {
+                    l6_nav {
+                        margin-top: "40px";
+                        display: "flex";
+                        justify-content: "space-between";
+                        align-items: "center";
+
+                        l6_prev {
+                            text: "← Variables";
+                            background: $tile;
+                            color: $fg;
+                            padding: "10px 20px";
+                            border-radius: "6px";
+                            cursor: "pointer";
+                            font-weight: "600";
+                            border: "none";
+
+                            ?click {
+                                $show_l6: "none";
+                                $show_l5: "block";
+                                $fw_6: "400";
+                                $fw_5: "700";
+                            }
+                        }
+                    }
+
+                    l6_finish {
                         margin-top: "48px";
                         padding: "32px";
                         background: $tile;
@@ -1418,17 +1389,21 @@ cui! {
                             margin-bottom: "12px";
                         }
                         finish_body {
-                            text: "Three block types — instances, classes, and listeners — plus properties and variables. The compiler handles the rest: cascading, scoping, and splitting your code across HTML, CSS, and WebAssembly.";
+                            text: "Four building blocks — instances, classes, listeners, and variables — plus properties. The compiler handles the rest: cascading, scoping, and splitting your code across HTML, CSS, and WebAssembly.";
                             line-height: "1.6";
                             margin-bottom: "20px";
                             opacity: "0.8";
                         }
-                        finish_link {
-                            link: "https://github.com/thisminute/cascading-ui";
-                            text: "Explore on GitHub →";
+                        finish_home {
+                            text: "← Back to Home";
                             color: $accent;
                             font-weight: "600";
-                            text-decoration: "none";
+                            cursor: "pointer";
+
+                            ?click {
+                                $show_tutorial: "none";
+                                $show_home: "block";
+                            }
                         }
                     }
                 }

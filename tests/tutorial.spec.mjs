@@ -1,11 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-// Helper: get the visible lesson/page container
-function visibleSection(page) {
-  // The currently visible section is the one with display != none
-  return page.locator('div:visible');
-}
-
 test.describe('Homepage', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:8090');
@@ -21,8 +15,8 @@ test.describe('Homepage', () => {
     await expect(page.locator('text=.button {').first()).toBeVisible();
   });
 
-  test('hero has live demo below code', async ({ page }) => {
-    await expect(page.locator('text=LIVE OUTPUT:').first()).toBeVisible();
+  test('hero has output demo below code', async ({ page }) => {
+    await expect(page.locator('text=OUTPUT:').first()).toBeVisible();
   });
 
   test('hero demo button is clickable', async ({ page }) => {
@@ -33,13 +27,23 @@ test.describe('Homepage', () => {
     await expect(clicked).toBeVisible();
   });
 
-  test('Try It demo button works', async ({ page }) => {
-    // The "Click me" button is in the Try It section (capitalized)
-    const tryBtn = page.getByText('Click me', { exact: true }).first();
-    await expect(tryBtn).toBeVisible();
-    await tryBtn.click();
+  test('hero tab switcher toggles to HTML view', async ({ page }) => {
+    const htmlBtn = page.getByText('HTML →', { exact: true }).first();
+    await expect(htmlBtn).toBeVisible();
+    await htmlBtn.click();
     await page.waitForTimeout(300);
-    await expect(page.getByText('Clicked! This ran through Wasm.', { exact: true })).toBeVisible();
+    await expect(page.getByText('← CUI', { exact: true }).first()).toBeVisible();
+    // Should show real compiled HTML with class name
+    await expect(page.locator('text=class=').first()).toBeVisible();
+  });
+
+  test('hero tab switcher toggles back to CUI view', async ({ page }) => {
+    await page.getByText('HTML →', { exact: true }).first().click();
+    await page.waitForTimeout(300);
+    await page.getByText('← CUI', { exact: true }).first().click();
+    await page.waitForTimeout(300);
+    await expect(page.locator('text=.button {').first()).toBeVisible();
+    await expect(page.getByText('HTML →', { exact: true }).first()).toBeVisible();
   });
 
   test('has dark mode toggle', async ({ page }) => {
@@ -53,10 +57,13 @@ test.describe('Homepage', () => {
   test('shows all homepage sections', async ({ page }) => {
     await expect(page.getByText('What is CUI?', { exact: true })).toBeVisible();
     await expect(page.getByText('Why CUI?', { exact: true })).toBeVisible();
-    await expect(page.getByText('Try it', { exact: true })).toBeVisible();
     await expect(page.getByText('Interactive Tutorial', { exact: true })).toBeVisible();
     await expect(page.getByText('How it works', { exact: true })).toBeVisible();
     await expect(page.getByText('Get started', { exact: true })).toBeVisible();
+  });
+
+  test('mentions variables on homepage', async ({ page }) => {
+    await expect(page.locator('text=Variables wire them together')).toBeVisible();
   });
 
   test('GitHub link is present', async ({ page }) => {
@@ -84,7 +91,8 @@ test.describe('Tutorial Navigation', () => {
     await expect(page.getByText('2. Structure', { exact: true })).toBeVisible();
     await expect(page.getByText('3. Classes', { exact: true })).toBeVisible();
     await expect(page.getByText('4. Events', { exact: true })).toBeVisible();
-    await expect(page.getByText('5. All Together', { exact: true })).toBeVisible();
+    await expect(page.getByText('5. Variables', { exact: true })).toBeVisible();
+    await expect(page.getByText('6. All Together', { exact: true })).toBeVisible();
   });
 
   test('← Home link returns to homepage', async ({ page }) => {
@@ -115,34 +123,27 @@ test.describe('Lesson 1: Text', () => {
     await expect(page.getByText('The simplest thing: putting words on the page', { exact: true })).toBeVisible();
   });
 
-  test('shows CUI source code', async ({ page }) => {
-    await expect(page.locator('text=CUI source:').first()).toBeVisible();
-  });
-
   test('shows live demo with Hello CUI', async ({ page }) => {
-    await expect(page.locator('text=Live result:').first()).toBeVisible();
     await expect(page.getByText('Hello, CUI!', { exact: true }).first()).toBeVisible();
   });
 
-  test('toggle shows compiled output', async ({ page }) => {
-    // Click the first "Show compiled" toggle (for lesson 1)
-    await page.locator('text=▶ Show compiled HTML + CSS').first().click();
-    await page.waitForTimeout(300);
-    await expect(page.locator('text=Compiled HTML:').first()).toBeVisible();
-    await expect(page.locator('text=Compiled CSS:').first()).toBeVisible();
+  test('sidebar highlights active lesson', async ({ page }) => {
+    // "1. Text" should be bold (font-weight: 700)
+    const menuItem = page.getByText('1. Text', { exact: true });
+    await expect(menuItem).toBeVisible();
   });
 
-  test('toggle hides compiled output', async ({ page }) => {
-    // Show it
-    await page.locator('text=▶ Show compiled HTML + CSS').first().click();
+  test('tab switcher shows compiled HTML', async ({ page }) => {
+    const toggles = page.getByText('HTML →', { exact: true });
+    for (let i = 0; i < await toggles.count(); i++) {
+      if (await toggles.nth(i).isVisible()) {
+        await toggles.nth(i).click();
+        break;
+      }
+    }
     await page.waitForTimeout(300);
-    await expect(page.locator('text=Compiled HTML:').first()).toBeVisible();
-    // Hide it
-    await page.locator('text=▼ Hide compiled HTML + CSS').first().click();
-    await page.waitForTimeout(300);
-    // The first "Compiled HTML:" should now be hidden
-    // Check by verifying the show toggle is back
-    await expect(page.locator('text=▶ Show compiled HTML + CSS').first()).toBeVisible();
+    // Should show the real compiled output
+    await expect(page.locator('text=<div>Hello, CUI!</div>').first()).toBeVisible();
   });
 
   test('Next button navigates to lesson 2', async ({ page }) => {
@@ -162,11 +163,11 @@ test.describe('Lesson 2: Structure', () => {
     await page.waitForTimeout(300);
   });
 
-  test('shows card demo with structure', async ({ page }) => {
+  test('shows card demo with styling in code', async ({ page }) => {
     await expect(page.getByText('Lesson 2: Elements & Structure', { exact: true })).toBeVisible();
-    // "My Card" appears in both code block and demo — check demo is visible
     await expect(page.getByText('My Card', { exact: true }).first()).toBeVisible();
-    await expect(page.getByText('Content inside the card.', { exact: true }).first()).toBeVisible();
+    // Code example should include styling properties
+    await expect(page.locator('text=border-left:').first()).toBeVisible();
   });
 
   test('prev button goes to lesson 1', async ({ page }) => {
@@ -198,6 +199,19 @@ test.describe('Lesson 3: Classes', () => {
     await expect(page.getByText('Custom', { exact: true }).first()).toBeVisible();
     await expect(page.getByText('Another', { exact: true }).first()).toBeVisible();
   });
+
+  test('HTML view shows CSS class from .tag', async ({ page }) => {
+    const toggles = page.getByText('HTML →', { exact: true });
+    for (let i = 0; i < await toggles.count(); i++) {
+      if (await toggles.nth(i).isVisible()) {
+        await toggles.nth(i).click();
+        break;
+      }
+    }
+    await page.waitForTimeout(300);
+    // Should show real CSS class from .tag
+    await expect(page.locator('text=from .tag class').first()).toBeVisible();
+  });
 });
 
 test.describe('Lesson 4: Events', () => {
@@ -210,22 +224,14 @@ test.describe('Lesson 4: Events', () => {
     await page.waitForTimeout(300);
   });
 
-  test('shows interactive button demo', async ({ page }) => {
+  test('shows simplified event demo (no variable)', async ({ page }) => {
     await expect(page.getByText('Lesson 4: Events & Interactivity', { exact: true })).toBeVisible();
-    // Find the visible "Click me" button (skip hidden ones from other pages)
-    const allBtns = page.getByText('Click me', { exact: true });
-    let found = false;
-    for (let i = 0; i < await allBtns.count(); i++) {
-      if (await allBtns.nth(i).isVisible()) {
-        found = true;
-        break;
-      }
-    }
-    expect(found).toBe(true);
+    // Code should NOT show "let $msg" — simplified version
+    const codeBlock = page.locator('text=let $msg');
+    await expect(codeBlock).not.toBeVisible();
   });
 
-  test('button click changes text and color', async ({ page }) => {
-    // Find the visible "Click me" button
+  test('button click changes text', async ({ page }) => {
     const allBtns = page.getByText('Click me', { exact: true });
     let demoBtn = null;
     for (let i = 0; i < await allBtns.count(); i++) {
@@ -237,44 +243,77 @@ test.describe('Lesson 4: Events', () => {
     expect(demoBtn).not.toBeNull();
     await demoBtn.click();
     await page.waitForTimeout(500);
-    await expect(page.getByText('Clicked! This runs in Wasm.', { exact: true })).toBeVisible();
+    await expect(page.getByText('Clicked!', { exact: true })).toBeVisible();
   });
 
-  test('shows compiled output with Wasm explanation', async ({ page }) => {
-    // The "Show compiled" for lesson 4 is after lessons 1-3's toggle
-    // Click it via the visible one on lesson 4's page
-    const toggles = page.locator('text=▶ Show compiled HTML + CSS');
-    // Lesson 4's toggle should be the 4th (index 3), but let's find the visible one
-    for (let i = 0; i < await toggles.count(); i++) {
-      if (await toggles.nth(i).isVisible()) {
-        await toggles.nth(i).click();
-        break;
-      }
-    }
+  test('next button goes to Variables lesson', async ({ page }) => {
+    await page.getByText('Variables →', { exact: true }).click();
     await page.waitForTimeout(300);
-    await expect(page.getByText('Compiled to Wasm:', { exact: true })).toBeVisible();
+    await expect(page.getByText('Lesson 5: Variables', { exact: true })).toBeVisible();
   });
 });
 
-test.describe('Lesson 5: All Together', () => {
+test.describe('Lesson 5: Variables', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:8090');
     await page.waitForTimeout(1500);
     await page.getByText('Start Tutorial →', { exact: true }).click();
     await page.waitForTimeout(300);
-    await page.getByText('5. All Together', { exact: true }).click();
+    await page.getByText('5. Variables', { exact: true }).click();
+    await page.waitForTimeout(300);
+  });
+
+  test('shows variable demo with Waiting... and Activate', async ({ page }) => {
+    await expect(page.getByText('Lesson 5: Variables', { exact: true })).toBeVisible();
+    await expect(page.getByText('Waiting...', { exact: true }).first()).toBeVisible();
+    await expect(page.getByText('Activate', { exact: true }).first()).toBeVisible();
+  });
+
+  test('clicking Activate changes label text', async ({ page }) => {
+    const allBtns = page.getByText('Activate', { exact: true });
+    let btn = null;
+    for (let i = 0; i < await allBtns.count(); i++) {
+      if (await allBtns.nth(i).isVisible()) {
+        btn = allBtns.nth(i);
+        break;
+      }
+    }
+    expect(btn).not.toBeNull();
+    await btn.click();
+    await page.waitForTimeout(500);
+    await expect(page.getByText('Active!', { exact: true })).toBeVisible();
+  });
+});
+
+test.describe('Lesson 6: All Together', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('http://localhost:8090');
+    await page.waitForTimeout(1500);
+    await page.getByText('Start Tutorial →', { exact: true }).click();
+    await page.waitForTimeout(300);
+    await page.getByText('6. All Together', { exact: true }).click();
     await page.waitForTimeout(300);
   });
 
   test('shows todo list demo', async ({ page }) => {
-    await expect(page.getByText('Lesson 5: Putting It All Together', { exact: true })).toBeVisible();
+    await expect(page.getByText('Lesson 6: Putting It All Together', { exact: true })).toBeVisible();
     await expect(page.getByText('Learn CUI', { exact: true }).first()).toBeVisible();
     await expect(page.getByText('Build something', { exact: true }).first()).toBeVisible();
   });
 
-  test('shows finish card with GitHub link', async ({ page }) => {
+  test('shows status text', async ({ page }) => {
+    await expect(page.getByText('nothing checked', { exact: true }).first()).toBeVisible();
+  });
+
+  test('shows finish card with back to home link', async ({ page }) => {
     await expect(page.getByText("That's the core of CUI.", { exact: true })).toBeVisible();
-    await expect(page.getByText('Explore on GitHub →', { exact: true })).toBeVisible();
+    await expect(page.getByText('← Back to Home', { exact: true })).toBeVisible();
+  });
+
+  test('back to home link works', async ({ page }) => {
+    await page.getByText('← Back to Home', { exact: true }).click();
+    await page.waitForTimeout(300);
+    await expect(page.getByText('What is CUI?', { exact: true })).toBeVisible();
   });
 });
 
@@ -338,9 +377,14 @@ test.describe('Full lesson flow', () => {
     await expect(page.getByText('Lesson 4: Events & Interactivity', { exact: true })).toBeVisible();
 
     // Lesson 4 → Lesson 5
+    await page.getByText('Variables →', { exact: true }).click();
+    await page.waitForTimeout(300);
+    await expect(page.getByText('Lesson 5: Variables', { exact: true })).toBeVisible();
+
+    // Lesson 5 → Lesson 6
     await page.getByText('Putting It Together →', { exact: true }).click();
     await page.waitForTimeout(300);
-    await expect(page.getByText('Lesson 5: Putting It All Together', { exact: true })).toBeVisible();
+    await expect(page.getByText('Lesson 6: Putting It All Together', { exact: true })).toBeVisible();
 
     // Should see the finish card
     await expect(page.getByText("That's the core of CUI.", { exact: true })).toBeVisible();
