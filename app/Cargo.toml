@@ -8,7 +8,7 @@ description = "The cascading-ui.net website — built with CUI"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-cascading-ui = { path = "../../cascading-ui" }
+cascading-ui = { git = "https://github.com/thisminute/cascading-ui" }
 wasm-bindgen = "0.2"
 console_error_panic_hook = "0.1"
 
