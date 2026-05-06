@@ -35,7 +35,7 @@ jobs:
       - name: Prepare deploy directory
         run: |
           mkdir -p _site/cui
-          cp app/target/html/index.html _site/index.html
+          cp target/html/index.html _site/index.html
           cp app/pkg/*.js app/pkg/*.wasm _site/cui/
           echo "cascading-ui.net" > _site/CNAME
 

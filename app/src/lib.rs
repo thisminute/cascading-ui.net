@@ -215,17 +215,12 @@ cui! {
             }
             demo {
                 .demo_area {}
-                $status: "Click the button below";
-                status_display {
-                    text: $status;
-                    font-size: "1.1rem";
-                    margin-bottom: "16px";
-                }
                 button {
                     .demo_button {}
-                    text: "Click me";
+                    $label: "Click me";
+                    text: $label;
                     ?click {
-                        $status: "CUI handles reactivity through Wasm!";
+                        $label: "Clicked! CUI handles this through Wasm.";
                     }
                 }
             }
